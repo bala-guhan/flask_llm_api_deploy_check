@@ -1,0 +1,18 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Flask App</title>
+</head>
+<body>
+    <h1>Query Form</h1>
+    <form method="POST" action="/">
+        <input type="text" name="query" placeholder="Enter your query" required>
+        <button type="submit">Submit</button>
+    </form>
+
+    {% if response %}
+        <h2>Your query was: {{ response }}</h2>
+    {% endif %}
+</body>
+</html>
