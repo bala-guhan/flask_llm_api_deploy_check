@@ -1,4 +1,4 @@
 Flask
 google-generativeai
 python-dotenv
-youtube_transcript_api
+youtube-transcript-api==0.4.0
