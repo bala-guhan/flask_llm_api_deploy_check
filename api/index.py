@@ -34,15 +34,9 @@ def home():
             for attempt in range(retries):
                 try:
                     transcript = YouTubeTranscriptApi.get_transcript(video_id)
-                    return " ".join([item["text"] for item in transcript])
+                    return transcript
                 except NoTranscriptFound:
                     return "No subtitles available for this video."
-                except Exception as e:
-                    if attempt < retries - 1:
-                        time.sleep(5)  # Wait before retrying
-                        continue
-                    else:
-                        return f"Error: {e}"
 
         def summarize_text(content):
             prompt_template = (
