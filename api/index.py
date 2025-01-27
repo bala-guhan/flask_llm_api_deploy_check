@@ -5,6 +5,7 @@ from youtube_transcript_api import YouTubeTranscriptApi
 from youtube_transcript_api._errors import NoTranscriptFound
 import re
 from dotenv import load_dotenv  
+import time
 
 app = Flask(__name__)
 
@@ -29,13 +30,19 @@ def home():
                 return match.group(1)
             raise ValueError("Invalid YouTube URL")
 
-        def fetch_transcript(video_id):
-            try:
-                transcript = YouTubeTranscriptApi.get_transcript(video_id)
-                # Combine all text from the transcript
-                return " ".join([item["text"] for item in transcript])
-            except NoTranscriptFound:
-                return None
+        def fetch_transcript(video_id, retries=3):
+            for attempt in range(retries):
+                try:
+                    transcript = YouTubeTranscriptApi.get_transcript(video_id)
+                    return " ".join([item["text"] for item in transcript])
+                except NoTranscriptFound:
+                    return "No subtitles available for this video."
+                except Exception as e:
+                    if attempt < retries - 1:
+                        time.sleep(5)  # Wait before retrying
+                        continue
+                    else:
+                        return f"Error: {e}"
 
         def summarize_text(content):
             prompt_template = (
