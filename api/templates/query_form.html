@@ -1,18 +1,36 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="utf-8">
-    <title>Flask App</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Video Summary</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">  <!-- Link to external CSS file -->
 </head>
 <body>
-    <h1>Query Form</h1>
+    <h1>Get your Video's summarized in one click</h1>
+    <p> Skip the endless hours of video lectures! </p>
     <form method="POST" action="/">
-        <input type="text" name="query" placeholder="Enter your query" required>
-        <button type="submit">Submit</button>
+        <input type="text" name="query" placeholder="Enter the Youtube Video URL" required>
+        <button type="submit">Summarize</button>
     </form>
 
+    {% if error_message %}
+        <p style="color:red;">{{ error_message }}</p>
+    {% endif %}
+
     {% if response %}
-        <h2>Your query was: {{ response }}</h2>
+        <h1>Video:</h1>
+        {% if video_id %}
+            <iframe width="560" height="315" 
+                src="https://www.youtube.com/embed/{{ video_id }}"  
+                frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
+            </iframe>
+        {% endif %}
+
+        <h1>Summary:</h1>
+        <p>{{ response }}</p>
     {% endif %}
 </body>
+
 </html>

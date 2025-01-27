@@ -1,0 +1,112 @@
+/* Reset some basic styles for consistency */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Body styles */
+body {
+    padding-top: 200px;
+    font-family: 'Poppins', sans-serif;
+    background-color: #918c8c;
+    color: #333;
+    line-height: 1.6;
+    margin-top: 50px;
+}
+
+/* Header styles */
+h1 {
+    text-align: center;
+    color: #040303;
+    margin-bottom: 20px;
+    font-size: 2em;
+    margin-top: 20px;
+}
+
+/* Form styling */
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+form input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 1em;
+    box-sizing: border-box;
+}
+
+form button {
+    padding: 10px 20px;
+    background-color: #a29f9f;
+    color: rgb(0, 0, 0);
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1em;
+}
+
+form button:hover {
+    background-color: #fbf8f8;
+}
+
+/* Video Embed styles */
+iframe {
+    display: block;
+    margin: 20px auto;
+    border: none;
+}
+
+/* Summary section styles */
+h2 {
+    color: #333;
+    text-align: center;
+    font-size: 1.6em;
+    margin-top: 20px;
+
+}
+
+p {
+    color: #000000;
+    font-size: 1.1em;
+    line-height: 1.6;
+    text-align: center;
+    margin-left: 20px;
+    margin-right: 20px;
+    margin-bottom: 30px;
+}
+
+/* Error message styles */
+p[style="color:red;"] {
+    color: red;
+    font-weight: bold;
+    text-align: center;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    body {
+        padding: 10px;
+    }
+
+    form {
+        padding: 15px;
+        width: 100%;
+    }
+
+    iframe {
+        width: 100%;
+    }
+}
+
